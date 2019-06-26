@@ -158,7 +158,7 @@ class Quiz extends Component {
     if (completed) {
         return (
             <div>
-                <h2 style={{textAlign:'center'}}>Your best match is: <strong>ULD</strong>
+                <h2 style={{textAlign:'center'}}>Your best match is: <strong>ULD Jacket</strong>
                     <br/>
                     [short description]
                     <br/>
