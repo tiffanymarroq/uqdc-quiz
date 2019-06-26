@@ -170,7 +170,7 @@ class Quiz extends Component {
                     {products}
                 </div>
                 <button>Share this quiz!</button>
-
+                <br/>
                 <button onClick={this.restart}>Start Over</button>
             </div>
         );
