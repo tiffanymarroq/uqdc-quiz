@@ -52,7 +52,7 @@ class Quiz extends Component {
         answers:{},
         
     };
-    this.onChangeHandler = this.onChangeHandler.bind(this)
+        this.onChangeHandler = this.onChangeHandler.bind(this)
     }
 
     onChangeHandler = (answer, i, e) => {
