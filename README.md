@@ -41,11 +41,11 @@ You can find your files in the **/dist** folder
 ### Step 4 - Add to HTML
 
 ```
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/tiffanymarroq/uqdc-quiz/dist/style/build.min.css">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/tiffanymarroq/uqdc-quiz/dist/style/build.min.css">
 
-    <div id='root'></div>
-    
-    <script src="https://cdn.jsdelivr.net/gh/tiffanymarroq/uqdc-quiz/dist/script/build.min.js"></script>
+<div id='root'></div>
+
+<script src="https://cdn.jsdelivr.net/gh/tiffanymarroq/uqdc-quiz/dist/script/build.min.js"></script>
 
 ```
 

@@ -206,7 +206,7 @@ class Quiz extends Component {
                     {questionsList[questionCount]}
                     <div className="button-container">
                         {questionCount > 0 ?
-                            <button onClick={this.prevQuestion}>Prev</button>
+                            <button onClick={this.prevQuestion}>Previous</button>
                         :   null
                         
                         }
