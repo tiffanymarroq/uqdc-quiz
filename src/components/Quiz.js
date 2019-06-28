@@ -19,35 +19,33 @@ class Quiz extends Component {
         4: "How would you like to shop?"
         },
         options:{
-        0: [
-            'Summer',
-            'Winter',
-            'Spring',
-            'Fall'
-        ],
-        1: [
-            'blue',
-            'black',
-            'green',
-            'grey',
-            'white',
-            'pink',
-            'yellow'
-        ],
-        2: [
-            'yes',
-            'no'
-        ],
-        3:[
-            'yes',
-            'no'
-        ],
-        4:[
-            'Women',
-            'Men',
-            'Kids',
-            "Baby"
-        ]
+        0: {
+            'Summer' : 'text' ,
+            'Winter' : 'text' ,
+            'Spring' : 'text' ,
+            'Fall' : 'text' 
+        },
+        1: {
+            'blue' : 'color',
+            'black' : 'color' ,
+            'green' : 'color' ,
+            'grey' : 'color',
+          
+        },
+        2: {
+            'yes' : 'text',
+            'no' : 'text'
+        },
+        3:{
+            'yes' : 'text',
+            'no' : 'text'
+        },
+        4:{
+            'Women' : 'text',
+            'Men' : 'text',
+            'Kids' : 'text',
+            'Baby' : 'text'
+        }
         },
         answers:{},
         
@@ -110,13 +108,14 @@ class Quiz extends Component {
 
     render() {
     let { 
-            completed,
-            questions,
-            options, 
-            answers, 
-            isOpen,
-            questionCount,
+        completed,
+        questions,
+        options, 
+        answers, 
+        isOpen,
+        questionCount,
         } = this.state;
+
     let total = Object.keys(questions).length;
 
     
@@ -157,6 +156,9 @@ class Quiz extends Component {
     if(window.location.href.includes('uniqlo.com')){
         return null
     }
+
+   
+
     if (completed) {
         return (
             <div>
@@ -177,26 +179,55 @@ class Quiz extends Component {
         );
     } 
 
-    let questionsList = Object.keys(questions).map((q, i) => {
-        let optionsList = Object.keys(options[i]).map((o, j) => {
-            if(options[i][j] != null){
-                return(
+    let imageCheck = (/\.(gif|jpg|jpeg|tiff|png)$/i);
+
+    console.log('answer',this.state.answers)
+    let quizBuild = Object.keys(questions).map((question, i ) =>{
+        let quizOptions = Object.keys(options[i]).map((option, j)=>{
+            let opt = options[i][option].toLowerCase();
+            if(opt == 'text'){
+                return (
                     <button 
                         id={"opt-" + j} 
-                        className={"option " + (answers[i] == options[i][j] ? "active" : "" ) }key={j} 
-                        onClick={() => this.onChangeHandler(options[i][j], i)} >
-                        {options[i][j]}
+                        className={"option " + (answers[i] == option ? "active" : "" ) }key={j} 
+                        onClick={() => this.onChangeHandler(option, i)} >
+                        {option}
                     </button>
                 )
             }
+            if(opt == 'color'){
+                return(
+                    <button 
+                    id={"opt-" + j} 
+                    style={{backgroundColor: option}}
+                    className={"option color-btn " + (answers[i] == option ? "active" : "" ) }key={j} 
+                    onClick={() => this.onChangeHandler(option, i)} >
+               
+                </button>
+                )
+               
+            }
+            if(opt == 'image'){
+                return(
+                    <button 
+                    id={"opt-" + j} 
+                    style={{bacgroundColor: option}}
+                    className={"option color-btn" + (answers[i] == option ? "active" : "" ) }key={j} 
+                    onClick={() => this.onChangeHandler(option, i)} >
+                            pic
+                </button>
+                )
+              
+            }
         })
-            return(
+        return(
             <div id={'q-' + i } className="question-card"key={i}>
-                <h2 className="question">{questions[q]}</h2>
-                <div className="optionsContainer">{optionsList}</div>
-            </div>
-            )
+            <h2 className="question">{questions[question]}</h2>
+            <div className="optionsContainer">{quizOptions}</div>
+        </div>
+        )
     })
+ 
     return (
         <div className="quiz">
             <h2>Find the best Match!</h2>
@@ -204,7 +235,7 @@ class Quiz extends Component {
             <div className={"quizContainer " + (isOpen ? "" : "hide")}>
                 <div  className="quizModal">
                     <span className="progress-bar" style={{width:(questionCount/(total-1))*100 + '%'}}></span>
-                    {questionsList[questionCount]}
+                    {quizBuild[questionCount]}
                     <div className="button-container">
                         {questionCount > 0 ?
                             <button onClick={this.prevQuestion}>Previous</button>
