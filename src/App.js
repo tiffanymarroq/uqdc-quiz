@@ -1,11 +1,17 @@
 import React from 'react';
 import './App.css';
-import Quiz from './components/Quiz'
+import QuizCard from './components/Quiz'
 
 function App() {
+  let quizData={
+    
+  }
+  let quizzes = {
+
+  }
   return (
     <div className="App" style={{maxWidth: "900px"}}>
-      <Quiz/>
+      <QuizCard />
     </div>
   );
 }
