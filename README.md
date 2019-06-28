@@ -37,6 +37,8 @@ If there is a permission error:
 
 You can find your files in the **/dist** folder
 
+Push your work to this repo to update the files.
+
 
 ### Step 4 - Add to HTML
 
