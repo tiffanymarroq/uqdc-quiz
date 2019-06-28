@@ -107,6 +107,7 @@ class Quiz extends Component {
             })
         }
     }
+
     render() {
     let { 
             completed,
@@ -117,7 +118,8 @@ class Quiz extends Component {
             questionCount,
         } = this.state;
     let total = Object.keys(questions).length;
-    console.log(answers)
+
+    
     let dummyData = {
         0: {
         'title': "testing",
@@ -164,7 +166,6 @@ class Quiz extends Component {
                     <br/>
                     [learn more btn]
                 </h2>
-                
                 <p>Here are your matches</p>
                 <div className="productContainer">
                     {products}
@@ -208,9 +209,7 @@ class Quiz extends Component {
                         {questionCount > 0 ?
                             <button onClick={this.prevQuestion}>Previous</button>
                         :   null
-                        
                         }
-
                     </div>
                 </div>
                 <div onClick={this.startQuiz} className="overlay"></div>
