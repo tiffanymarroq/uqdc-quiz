@@ -157,7 +157,6 @@ class Quiz extends Component {
         return null
     }
 
-   
 
     if (completed) {
         return (
