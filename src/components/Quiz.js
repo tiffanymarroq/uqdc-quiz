@@ -85,7 +85,7 @@ class Quiz extends Component {
     }
 
     nextQuestion = () => {
-        let questionTotal = Object.keys(this.state.questions).length ;
+        let questionTotal = Object.keys(this.props.questions).length ;
         if(this.state.questionCount < (questionTotal - 1)){
             this.setState({
             questionCount: this.state.questionCount + 1
@@ -98,7 +98,7 @@ class Quiz extends Component {
     
     }
     prevQuestion = () => {
-        let questionTotal = Object.keys(this.state.questions).length ;
+        let questionTotal = Object.keys(this.props.questions).length ;
         if((this.state.questionCount <= (questionTotal - 1)) && (this.state.questionCount > 0)){
             this.setState({
                 questionCount: this.state.questionCount - 1
@@ -109,12 +109,15 @@ class Quiz extends Component {
     render() {
     let { 
         completed,
-        questions,
-        options, 
         answers, 
         isOpen,
         questionCount,
         } = this.state;
+    
+    let {
+        questions,
+        options
+    } = this.props
 
     let total = Object.keys(questions).length;
 
@@ -149,7 +152,7 @@ class Quiz extends Component {
             <p>{dummyData[product].price}</p>
             <a  href={dummyData[product].url}>Shop Now</a>
             <br/>
-            <a >Share this product</a>
+            <a href="/">Share this product</a>
         </div>
         )
     })

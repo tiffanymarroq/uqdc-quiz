@@ -1,9 +1,9 @@
+@import '_breakpoints.scss';
 body {
-    background-color: #fefefe;
+    background-color: #fff;
   }
   
   .App {
-    max-width: 900px;
     margin: 0 auto;
   }
   
@@ -11,8 +11,33 @@ body {
     display: block;
     margin-bottom: 20px;
   }
-  
-  
+  .quiz-content{
+    display: flex;
+    flex-wrap: wrap;
+  }
+  .quiz-card{
+    width: 100%;
+    padding: 0 15px;
+    border-radius: 6px;
+    box-shadow: 1px 1px 20px 0 rgba(0, 0, 0, 0.21);
+    text-align: center;
+    cursor: pointer;
+    &:hover{
+    box-shadow: 1px 1px 20px 0 rgba(0, 0, 0, 0.4);
+
+    }
+    @include bp(sm){
+      width: calc(46.7% - 20px);
+      margin: 10px;
+    }
+    @include bp(md){
+      width: calc(30.33% - 20px);
+    }
+    button{
+      margin-left: auto;
+    }
+  }
+
   .productCard {
     width: calc(33.33% - 20px);
     margin: 10px;
@@ -64,7 +89,7 @@ body {
     top: 50%;
     left: 50%;
     z-index: 1;
-    background-color: #fff;
+    background-color: #ddd;
     padding: 30px;
     border-radius: 3px;
     display: inline-block;
@@ -143,11 +168,12 @@ body {
 
 button{
     font-size: 18px;
-    background-color: black;
-    color: white;
+    background-color: #000;
+    color: #fefefe;
     padding: 10px 20px;
-    border-radius: 8px;
+    border-radius: 3px;
     margin: 10px;
+    font-weight: bold;
 }
 
 .color-btn{
