@@ -141,7 +141,7 @@ function App() {
     console.log("background", quizzes[q].bannerImage)
     return (
       <div className="quiz-card" >
-        <div style={{backgroundColor:'rgba(255,255,255,.7', margin:"10px", padding: '10px'}}>
+        <div className="quiz-card-inner" >
           <h1>{quizzes[q].title}</h1>
           <p>{quizzes[q].description}</p>
           <div className="bannerImage">
