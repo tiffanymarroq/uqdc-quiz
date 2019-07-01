@@ -27,8 +27,9 @@ class Quiz extends Component {
     }
     startQuiz = ()=>{
         this.setState({
-            isOpen: !this.state.isOpen
-        }, ()=>{
+            isOpen: !this.state.isOpen,
+            answers:{},
+            questionCount: 0
         })
     }
 
@@ -88,19 +89,19 @@ class Quiz extends Component {
     
     let dummyData = {
         0: {
-        'title': "testing",
+        'title': "ULD",
         'url' : "https://www.uniqlo.com/us/en/women-reversible-parka-410091.html",
         'price' : "$9.90",
         'productImage' : 'https://image.uniqlo.com/UQ/ST3/WesternCommon/imagesgoods/409111/item/goods_69_409111.jpg'
         },
         1: {
-        'title': "testing",
+        'title': "ULD",
         'url' : "https://www.uniqlo.com/us/en/women-reversible-parka-410091.html",
         'price' : "$9.90",
         'productImage' : 'https://image.uniqlo.com/UQ/ST3/WesternCommon/imagesgoods/409111/item/goods_69_409111.jpg'
         },
         2: {
-        'title': "testing",
+        'title': "ULD",
         'url' : "https://www.uniqlo.com/us/en/women-reversible-parka-410091.html",
         'price' : "$9.90",
         'productImage' : 'https://image.uniqlo.com/UQ/ST3/WesternCommon/imagesgoods/409111/item/goods_69_409111.jpg'
@@ -116,7 +117,6 @@ class Quiz extends Component {
             <p>{dummyData[product].price}</p>
             <a  href={dummyData[product].url}>Shop Now</a>
             <br/>
-            <a href="/">Share this product</a>
         </div>
         )
     })
@@ -126,25 +126,7 @@ class Quiz extends Component {
 
    
 
-    // if (completed) {
-    //     return (
-    //         <div>
-    //             <h2 style={{textAlign:'center'}}>Your best match is: <strong>ULD Jacket</strong>
-    //                 <br/>
-    //                 [short description]
-    //                 <br/>
-    //                 [learn more btn]
-    //             </h2>
-    //             <p>Here are your matches</p>
-    //             <div className="productContainer">
-    //                 {products}
-    //             </div>
-    //             <button>Share this quiz!</button>
-    //             <br/>
-    //             <button onClick={this.restart}>Start Over</button>
-    //         </div>
-    //     );
-    // } 
+
 
     let imageCheck = (/\.(gif|jpg|jpeg|tiff|png)$/i);
 
@@ -211,6 +193,8 @@ class Quiz extends Component {
                         <div className="productContainer">
                             {products}
                         </div>
+                        <br/>
+                        <br/>
                         <button>Share this quiz!</button>
                         <br/>
                         <button onClick={this.restart}>Start Over</button>
