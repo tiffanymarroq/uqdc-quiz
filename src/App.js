@@ -50,8 +50,8 @@ function App() {
     },
     q2: {
       title: 'UT',
-      description: 'Find your match',
-      bannerImage: 'https://image.uniqlo.com/UQ/ST3/WesternCommon/imagesgoods/416373/item/goods_69_416373.jpg',
+      description: 'Find your next favorite shirt!',
+      bannerImage: 'https://images.pexels.com/photos/949587/pexels-photo-949587.jpeg',
       quiz: {
         questions: {
           0: "Pick a season",
@@ -92,9 +92,9 @@ function App() {
       }
     },
     q3: {
-      title: 'UT',
-      description: 'Find your match',
-      bannerImage: 'https://image.uniqlo.com/UQ/ST3/WesternCommon/imagesgoods/416373/item/goods_69_416373.jpg',
+      title: 'Jeans',
+      description: 'Find your perfect pair of jeans.',
+      bannerImage: 'https://images.pexels.com/photos/949587/pexels-photo-949587.jpeg',
       quiz: {
         questions: {
           0: "Pick a season",
@@ -140,10 +140,12 @@ function App() {
     console.log("data",q)
     console.log("background", quizzes[q].bannerImage)
     return (
-      <div className="quiz-card" style={{background: quizzes[q].bannerImage}}>
-        <h1>{quizzes[q].title}</h1>
-        <p>{quizzes[q].description}</p>
-        <QuizCard questions={quizzes[q].quiz.questions} options={quizzes[q].quiz.options}/>
+      <div className="quiz-card" >
+        <div style={{backgroundColor:'rgba(255,255,255,.7', margin:"10px", padding: '10px'}}>
+          <h1>{quizzes[q].title}</h1>
+          <p>{quizzes[q].description}</p>
+          <QuizCard questions={quizzes[q].quiz.questions} options={quizzes[q].quiz.options}/>
+        </div>
       </div>
     )
   })

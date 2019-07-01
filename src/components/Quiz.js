@@ -11,42 +11,7 @@ class Quiz extends Component {
         completed: false,
         questionCount: 0,
         isOpen: false,
-        questions:{
-        0: "Pick a weather",
-        1: "What's your favorite color?",
-        2: "Looking for something light-weight?",
-        3: "How active are you?",
-        4: "How would you like to shop?"
-        },
-        options:{
-        0: {
-            'Summer' : 'text' ,
-            'Winter' : 'text' ,
-            'Spring' : 'text' ,
-            'Fall' : 'text' 
-        },
-        1: {
-            'blue' : 'color',
-            'black' : 'color' ,
-            'green' : 'color' ,
-            'grey' : 'color',
-          
-        },
-        2: {
-            'yes' : 'text',
-            'no' : 'text'
-        },
-        3:{
-            'yes' : 'text',
-            'no' : 'text'
-        },
-        4:{
-            'Women' : 'text',
-            'Men' : 'text',
-            'Kids' : 'text',
-            'Baby' : 'text'
-        }
-        },
+      
         answers:{},
         
     };
@@ -162,25 +127,25 @@ class Quiz extends Component {
 
    
 
-    if (completed) {
-        return (
-            <div>
-                <h2 style={{textAlign:'center'}}>Your best match is: <strong>ULD Jacket</strong>
-                    <br/>
-                    [short description]
-                    <br/>
-                    [learn more btn]
-                </h2>
-                <p>Here are your matches</p>
-                <div className="productContainer">
-                    {products}
-                </div>
-                <button>Share this quiz!</button>
-                <br/>
-                <button onClick={this.restart}>Start Over</button>
-            </div>
-        );
-    } 
+    // if (completed) {
+    //     return (
+    //         <div>
+    //             <h2 style={{textAlign:'center'}}>Your best match is: <strong>ULD Jacket</strong>
+    //                 <br/>
+    //                 [short description]
+    //                 <br/>
+    //                 [learn more btn]
+    //             </h2>
+    //             <p>Here are your matches</p>
+    //             <div className="productContainer">
+    //                 {products}
+    //             </div>
+    //             <button>Share this quiz!</button>
+    //             <br/>
+    //             <button onClick={this.restart}>Start Over</button>
+    //         </div>
+    //     );
+    // } 
 
     let imageCheck = (/\.(gif|jpg|jpeg|tiff|png)$/i);
 
@@ -233,9 +198,25 @@ class Quiz extends Component {
  
     return (
         <div className="quiz">
-            <h2>Find the best Match!</h2>
             <button onClick={this.startQuiz}>Start</button>
             <div className={"quizContainer " + (isOpen ? "" : "hide")}>
+                { completed ? 
+                    <div className="productModal">
+                        <h2 style={{textAlign:'center'}}>Your best match is: <strong>ULD Jacket</strong>
+                            <br/>
+                            [short description]
+                            <br/>
+                            [learn more btn]
+                        </h2>
+                        <p>Here are your matches</p>
+                        <div className="productContainer">
+                            {products}
+                        </div>
+                        <button>Share this quiz!</button>
+                        <br/>
+                        <button onClick={this.restart}>Start Over</button>
+                    </div>
+                : 
                 <div  className="quizModal">
                     <span className="progress-bar" style={{width:(questionCount/(total-1))*100 + '%'}}></span>
                     {quizBuild[questionCount]}
@@ -246,6 +227,9 @@ class Quiz extends Component {
                         }
                     </div>
                 </div>
+                
+                }
+               
                 <div onClick={this.startQuiz} className="overlay"></div>
             </div>
         </div>

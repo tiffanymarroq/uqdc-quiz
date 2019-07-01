@@ -31,10 +31,10 @@ body {
       margin: 10px;
     }
     @include bp(md){
-      width: calc(30.33% - 20px);
+      width: calc(31.33% - 20px);
     }
     button{
-      margin-left: auto;
+      margin: 0  auto;
     }
   }
 
@@ -79,17 +79,18 @@ body {
     position: absolute;
     top: 0;
     left: 0;
-    background-color: rgba(108, 117, 158, 0.5);
+    background-color: rgba(108, 117, 158, 0.8);
     width: 100%;
     height: 100%;
+    
   }
   
-  .quizModal {
+  .quizModal, .productModal {
     position: absolute;
     top: 50%;
     left: 50%;
     z-index: 1;
-    background-color: #ddd;
+    background-color: #fefefe;
     padding: 30px;
     border-radius: 3px;
     display: inline-block;
@@ -99,6 +100,11 @@ body {
     -webkit-transform: translate(-50%, -50%);
             transform: translate(-50%, -50%);
     min-height: 400px;
+  }
+
+  .productModal{
+    width: 80%;
+    max-width: 800px;
   }
   
   .question {
