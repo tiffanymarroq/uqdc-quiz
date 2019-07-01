@@ -1,4 +1,4 @@
-import React from 'react';
+import React,{Component} from 'react';
 import './App.css';
 import QuizCard from './components/Quiz'
 
@@ -144,7 +144,10 @@ function App() {
         <div style={{backgroundColor:'rgba(255,255,255,.7', margin:"10px", padding: '10px'}}>
           <h1>{quizzes[q].title}</h1>
           <p>{quizzes[q].description}</p>
-          <QuizCard questions={quizzes[q].quiz.questions} options={quizzes[q].quiz.options}/>
+          <div className="bannerImage">
+            <img src={quizzes[q].bannerImage} width={'100%'} style={{margin:"10px 0 "}}/>
+          </div>
+          <QuizCard questions={quizzes[q].quiz.questions} options={quizzes[q].quiz.options} />
         </div>
       </div>
     )

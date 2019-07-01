@@ -11,7 +11,6 @@ class Quiz extends Component {
         completed: false,
         questionCount: 0,
         isOpen: false,
-      
         answers:{},
         
     };
