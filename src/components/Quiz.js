@@ -29,7 +29,8 @@ class Quiz extends Component {
         this.setState({
             isOpen: !this.state.isOpen,
             answers:{},
-            questionCount: 0
+            questionCount: 0,
+            completed: false
         })
     }
 
@@ -125,9 +126,6 @@ class Quiz extends Component {
         return null
     }
 
-   
-
-
 
     let imageCheck = (/\.(gif|jpg|jpeg|tiff|png)$/i);
 
@@ -135,9 +133,7 @@ class Quiz extends Component {
     let quizBuild = Object.keys(questions).map((question, i ) =>{
         let quizOptions = Object.keys(options[i]).map((option, j)=>{
             let opt = options[i][option];
-            console.log(opt['src'])
             if(opt['type'] === 'text'){
-                console.log('in')
                 return (
                     <button 
                         id={"opt-" + j} 
@@ -148,6 +144,7 @@ class Quiz extends Component {
                 )
             }
             if(opt['type'] == 'color'){
+                console.log(opt['src'])
                 return(
                     <button 
                     id={"opt-" + j} 
@@ -205,9 +202,11 @@ class Quiz extends Component {
                     {quizBuild[questionCount]}
                     <div className="button-container">
                         {questionCount > 0 ?
-                            <button onClick={this.prevQuestion}>Previous</button>
+                            <button className="prev-btn" onClick={this.prevQuestion}>Previous</button>
                         :   null
                         }
+                            <button className="next-btn" onClick={this.nextQuestion} disabled={answers[questionCount] == null ? true : false}>Next</button>
+
                     </div>
                 </div>
                 

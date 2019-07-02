@@ -6,6 +6,8 @@ body {
 
 .App {
   margin: 0 auto;
+  max-width: 900px;
+  margin: 0 auto
 }
 
 a {
@@ -221,6 +223,8 @@ body {
   position: absolute;
   bottom: 20px;
   width: calc(100% - 70px);
+  display: flex;
+  justify-content: space-between;
 }
 
 
