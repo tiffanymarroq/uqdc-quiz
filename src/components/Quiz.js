@@ -81,7 +81,8 @@ class Quiz extends Component {
     
     let {
         questions,
-        options
+        options,
+        title
     } = this.props
 
     let total = Object.keys(questions).length;
@@ -133,40 +134,39 @@ class Quiz extends Component {
     console.log('answer',this.state.answers)
     let quizBuild = Object.keys(questions).map((question, i ) =>{
         let quizOptions = Object.keys(options[i]).map((option, j)=>{
-            let opt = options[i][option].toLowerCase();
-            if(opt == 'text'){
+            let opt = options[i][option];
+            console.log(opt['src'])
+            if(opt['type'] === 'text'){
+                console.log('in')
                 return (
                     <button 
                         id={"opt-" + j} 
                         className={"option " + (answers[i] == option ? "active" : "" ) }key={j} 
                         onClick={() => this.onChangeHandler(option, i)} >
-                        {option}
+                        {opt['src']}
                     </button>
                 )
             }
-            if(opt == 'color'){
+            if(opt['type'] == 'color'){
                 return(
                     <button 
                     id={"opt-" + j} 
-                    style={{backgroundColor: option}}
+                    style={{backgroundColor: opt['src']}}
                     className={"option color-btn " + (answers[i] == option ? "active" : "" ) }key={j} 
                     onClick={() => this.onChangeHandler(option, i)} >
-               
                 </button>
                 )
-               
             }
-            if(opt == 'image'){
+            if(opt['type'] == 'image'){
                 return(
                     <button 
                     id={"opt-" + j} 
                     style={{bacgroundColor: option}}
-                    className={"option color-btn" + (answers[i] == option ? "active" : "" ) }key={j} 
+                    className={"option img-btn" + (answers[i] == option ? "active" : "" ) }key={j} 
                     onClick={() => this.onChangeHandler(option, i)} >
-                            pic
+                      <img className='optionImage' src={opt['src']} />
                 </button>
                 )
-              
             }
         })
         return(
