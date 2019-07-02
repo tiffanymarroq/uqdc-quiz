@@ -96,8 +96,7 @@ button {
   left: 0;
   width: 100%;
   z-index: 9999;
-  min-height: 400px;
-  height: 100vh;
+  min-height: 100vh;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -156,6 +155,7 @@ button {
   -ms-flex-wrap: wrap;
   flex-wrap: wrap;
   max-width: 700px;
+  flex-flow: row wrap;
 }
 
 .optionsContainer .option {
@@ -164,11 +164,22 @@ button {
   width: calc(50% - 20px);
   margin: 10px;
   background-color: black;
-
   &.active {
     background-color: #fff;
     border: 3px solid #000;
     color: black;
+  }
+  &.img-btn{
+    padding: 0;
+    padding-top: 36.5%;
+    overflow: hidden;
+    position: relative;
+    img{
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+    }
   }
 }
 
@@ -226,16 +237,12 @@ button {
   &:hover {
     box-shadow: 1px 1px 15px rgba(0, 0, 0, 0.21);
   }
+  
 }
 
 
 
-.img-btn{
-  padding: 10px;
-  img{
-    width: 100%;
-  }
-}
+
 
 
 .color-btn {
