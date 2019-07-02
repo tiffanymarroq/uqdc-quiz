@@ -83,7 +83,6 @@ class Quiz extends Component {
     let {
         questions,
         options,
-        title
     } = this.props
 
     let total = Object.keys(questions).length;
@@ -137,34 +136,37 @@ class Quiz extends Component {
                 return (
                     <button 
                         id={"opt-" + j} 
-                        className={"option " + (answers[i] == option ? "active" : "" ) }key={j} 
+                        className={"option " + (answers[i] === option ? "active" : "" ) }key={j} 
                         onClick={() => this.onChangeHandler(option, i)} >
                         {opt['src']}
                     </button>
                 )
-            }
-            if(opt['type'] == 'color'){
+            }else
+            if(opt['type'] === 'color'){
                 console.log(opt['src'])
                 return(
                     <button 
                     id={"opt-" + j} 
                     style={{backgroundColor: opt['src']}}
-                    className={"option color-btn " + (answers[i] == option ? "active" : "" ) }key={j} 
+                    className={"option color-btn " + (answers[i] === option ? "active" : "" ) }key={j} 
                     onClick={() => this.onChangeHandler(option, i)} >
                 </button>
                 )
-            }
-            if(opt['type'] == 'image'){
+            }else
+            if(opt['type'] === 'image'){
                 return(
                     <button 
                     id={"opt-" + j} 
                     style={{bacgroundColor: option}}
-                    className={"option img-btn" + (answers[i] == option ? "active" : "" ) }key={j} 
+                    className={"option img-btn" + (answers[i] === option ? "active" : "" ) }key={j} 
                     onClick={() => this.onChangeHandler(option, i)} >
-                      <img className='optionImage' src={opt['src']} />
+                      <img className='optionImage' src={opt['src']} alt={option + " Image"} />
                 </button>
                 )
+            }else{
+                return null
             }
+            
         })
         return(
             <div id={'q-' + i } className="question-card"key={i}>
@@ -206,12 +208,9 @@ class Quiz extends Component {
                         :   null
                         }
                             <button className="next-btn" onClick={this.nextQuestion} disabled={answers[questionCount] == null ? true : false}>Next</button>
-
                     </div>
                 </div>
-                
                 }
-               
                 <div onClick={this.startQuiz} className="overlay"></div>
             </div>
         </div>
