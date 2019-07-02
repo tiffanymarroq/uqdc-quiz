@@ -1,7 +1,7 @@
 @import '_breakpoints.scss';
 
 body {
-  background-color: #001;
+  // background-color: #001;
 }
 
 .App {
@@ -157,7 +157,8 @@ button {
   -ms-flex-wrap: wrap;
   flex-wrap: wrap;
   max-width: 700px;
-  flex-flow: row wrap;
+  // flex-flow: row wrap;
+  margin-bottom: 60px;
 }
 
 .optionsContainer .option {
@@ -214,6 +215,7 @@ body {
     position: absolute;
     top: 0;
     left: 0;
+    width: 100%;
   }
 }
 
@@ -245,13 +247,13 @@ button {
 }
 
 
-
-
-
-
 .color-btn {
   height: 50px;
   &.active{
     box-shadow: 0px 1px 15px rgba(0,0,0,.4)
   }
+}
+
+.quiz-page{
+  text-align: center;
 }

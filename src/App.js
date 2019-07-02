@@ -3,7 +3,7 @@ import './App.css';
 import QuizCard from './components/Quiz'
 
 function App() {
-
+  let singlePage = false;
   let quizzes = {
     q1: {
       title: 'Jackets',
@@ -275,9 +275,6 @@ function App() {
         }
       }
     },
- 
-   
-   
   }
 
   let quizCard = Object.keys(quizzes).map((q, i) => {
@@ -299,9 +296,20 @@ function App() {
   return ( 
     <div className = "App">
         <h1>Quizzes</h1>
-        <div className="quiz-content">
-          {quizCard}
-        </div>
+        {singlePage ? 
+              <QuizCard
+                single={singlePage} 
+                title={quizzes["q1"].title}
+                bannerImage={quizzes["q1"].bannerImage}
+                description={quizzes["q1"].description}
+                questions={quizzes["q1"].quiz.questions} 
+                options={quizzes["q1"].quiz.options} />
+          :
+          <div className="quiz-content">
+            {quizCard}
+          </div>
+        }
+        
     </div>
   );
 }

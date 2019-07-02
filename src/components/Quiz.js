@@ -83,6 +83,10 @@ class Quiz extends Component {
     let {
         questions,
         options,
+        title,
+        description,
+        single,
+        bannerImage
     } = this.props
 
     let total = Object.keys(questions).length;
@@ -175,30 +179,42 @@ class Quiz extends Component {
         </div>
         )
     })
- 
+    if(completed){
+        return(
+            <div className="productModal-">
+                <h2 style={{textAlign:'center'}}>Your best match is: <strong>ULD Jacket</strong>
+                    <br/>
+                    [short description]
+                    <br/>
+                    [learn more btn]
+                </h2>
+                <p>Here are your matches</p>
+                <div className="productContainer">
+                    {products}
+                </div>
+                <br/>
+                <br/>
+                <button>Share this quiz!</button>
+                <br/>
+                <button onClick={this.restart}>Start Over</button>
+            </div>
+        )
+    }
     return (
         <div className="quiz">
+            {single ?
+            <div style={{textAlign:'center'}}>
+                <h1>{title}</h1>
+                <p>{description}</p>
+                <div className="bannerImage" >
+                    <img src={bannerImage} alt={title + " Image"}/>
+                </div>
+            </div>
+            :
+             null
+            }
             <button onClick={this.startQuiz}>Start</button>
             <div className={"quizContainer " + (isOpen ? "" : "hide")}>
-                { completed ? 
-                    <div className="productModal">
-                        <h2 style={{textAlign:'center'}}>Your best match is: <strong>ULD Jacket</strong>
-                            <br/>
-                            [short description]
-                            <br/>
-                            [learn more btn]
-                        </h2>
-                        <p>Here are your matches</p>
-                        <div className="productContainer">
-                            {products}
-                        </div>
-                        <br/>
-                        <br/>
-                        <button>Share this quiz!</button>
-                        <br/>
-                        <button onClick={this.restart}>Start Over</button>
-                    </div>
-                : 
                 <div  className="quizModal">
                     <span className="progress-bar" style={{width:(questionCount/(total-1))*100 + '%'}}></span>
                     {quizBuild[questionCount]}
@@ -210,7 +226,6 @@ class Quiz extends Component {
                             <button className="next-btn" onClick={this.nextQuestion} disabled={answers[questionCount] == null ? true : false}>Next</button>
                     </div>
                 </div>
-                }
                 <div onClick={this.startQuiz} className="overlay"></div>
             </div>
         </div>
