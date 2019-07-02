@@ -215,7 +215,7 @@ class Quiz extends Component {
             }
             <button onClick={this.startQuiz}>Start</button>
             <div className={"quizContainer " + (isOpen ? "" : "hide")}>
-                <div  className="quizModal">
+                <div className="quizModal">
                     <span className="progress-bar" style={{width:(questionCount/(total-1))*100 + '%'}}></span>
                     {quizBuild[questionCount]}
                     <div className="button-container">
