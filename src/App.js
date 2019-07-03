@@ -3,7 +3,7 @@ import './App.css';
 import QuizCard from './components/Quiz'
 
 function App() {
-  let singlePage = false;
+  let singlePage = true;
   let quizzes = {
     q1: {
       title: 'Jackets',
@@ -21,19 +21,19 @@ function App() {
           0: {
             'Summer': {
               type: 'text',
-              src: 'summer'
+              src: 'Summer'
             },
             'Winter': {
               type: 'text',
-              src: 'winter'
+              src: 'Winter'
             },
             'Spring': { 
               type: 'text',
-              src: 'spring'
+              src: 'Spring'
             },
             'Fall': {
               type: 'text',
-              src: 'fall'
+              src: 'Fall'
             }
           },
           1: {
@@ -76,7 +76,7 @@ function App() {
           },
           4: {
             'Women':  {
-              type: 'text',
+              type: 'image',
               src: 'https://image.uniqlo.com//UQ/ST3/us/imagesother/What-is-AIRism/AIRism-asset-airismlogo-1.png'
             },
             'Men':  {

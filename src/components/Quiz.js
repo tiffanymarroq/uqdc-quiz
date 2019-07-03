@@ -204,16 +204,21 @@ class Quiz extends Component {
         <div className="quiz">
             {single ?
             <div style={{textAlign:'center'}}>
-                <h1>{title}</h1>
-                <p>{description}</p>
                 <div className="bannerImage" >
+                    <div className="bannerText">
+                        <div className="bannerText-inner">
+                            <h1>{title}</h1>
+                            <p>{description}</p>
+                            <button onClick={this.startQuiz}>Start</button>
+
+                        </div>
+                    </div>
                     <img src={bannerImage} alt={title + " Image"}/>
                 </div>
             </div>
             :
-             null
+                null
             }
-            <button onClick={this.startQuiz}>Start</button>
             <div className={"quizContainer " + (isOpen ? "" : "hide")}>
                 <div className="quizModal">
                     <span className="progress-bar" style={{width:(questionCount/(total-1))*100 + '%'}}></span>
