@@ -11,42 +11,6 @@ class Quiz extends Component {
         completed: false,
         questionCount: 0,
         isOpen: false,
-        questions:{
-        0: "Pick a weather",
-        1: "What's your favorite color?",
-        2: "Looking for something light-weight?",
-        3: "How active are you?",
-        4: "How would you like to shop?"
-        },
-        options:{
-        0: {
-            'Summer' : 'text' ,
-            'Winter' : 'text' ,
-            'Spring' : 'text' ,
-            'Fall' : 'text' 
-        },
-        1: {
-            'blue' : 'color',
-            'black' : 'color' ,
-            'green' : 'color' ,
-            'grey' : 'color',
-          
-        },
-        2: {
-            'yes' : 'text',
-            'no' : 'text'
-        },
-        3:{
-            'yes' : 'text',
-            'no' : 'text'
-        },
-        4:{
-            'Women' : 'text',
-            'Men' : 'text',
-            'Kids' : 'text',
-            'Baby' : 'text'
-        }
-        },
         answers:{},
         
     };
@@ -63,8 +27,10 @@ class Quiz extends Component {
     }
     startQuiz = ()=>{
         this.setState({
-            isOpen: !this.state.isOpen
-        }, ()=>{
+            isOpen: !this.state.isOpen,
+            answers:{},
+            questionCount: 0,
+            completed: false
         })
     }
 
@@ -85,7 +51,7 @@ class Quiz extends Component {
     }
 
     nextQuestion = () => {
-        let questionTotal = Object.keys(this.state.questions).length ;
+        let questionTotal = Object.keys(this.props.questions).length ;
         if(this.state.questionCount < (questionTotal - 1)){
             this.setState({
             questionCount: this.state.questionCount + 1
@@ -98,7 +64,7 @@ class Quiz extends Component {
     
     }
     prevQuestion = () => {
-        let questionTotal = Object.keys(this.state.questions).length ;
+        let questionTotal = Object.keys(this.props.questions).length ;
         if((this.state.questionCount <= (questionTotal - 1)) && (this.state.questionCount > 0)){
             this.setState({
                 questionCount: this.state.questionCount - 1
@@ -109,31 +75,38 @@ class Quiz extends Component {
     render() {
     let { 
         completed,
-        questions,
-        options, 
         answers, 
         isOpen,
         questionCount,
         } = this.state;
+    
+    let {
+        questions,
+        options,
+        title,
+        description,
+        single,
+        bannerImage
+    } = this.props
 
     let total = Object.keys(questions).length;
 
     
     let dummyData = {
         0: {
-        'title': "testing",
+        'title': "ULD",
         'url' : "https://www.uniqlo.com/us/en/women-reversible-parka-410091.html",
         'price' : "$9.90",
         'productImage' : 'https://image.uniqlo.com/UQ/ST3/WesternCommon/imagesgoods/409111/item/goods_69_409111.jpg'
         },
         1: {
-        'title': "testing",
+        'title': "ULD",
         'url' : "https://www.uniqlo.com/us/en/women-reversible-parka-410091.html",
         'price' : "$9.90",
         'productImage' : 'https://image.uniqlo.com/UQ/ST3/WesternCommon/imagesgoods/409111/item/goods_69_409111.jpg'
         },
         2: {
-        'title': "testing",
+        'title': "ULD",
         'url' : "https://www.uniqlo.com/us/en/women-reversible-parka-410091.html",
         'price' : "$9.90",
         'productImage' : 'https://image.uniqlo.com/UQ/ST3/WesternCommon/imagesgoods/409111/item/goods_69_409111.jpg'
@@ -149,7 +122,6 @@ class Quiz extends Component {
             <p>{dummyData[product].price}</p>
             <a  href={dummyData[product].url}>Shop Now</a>
             <br/>
-            <a >Share this product</a>
         </div>
         )
     })
@@ -158,9 +130,58 @@ class Quiz extends Component {
     }
 
 
-    if (completed) {
-        return (
-            <div>
+    let imageCheck = (/\.(gif|jpg|jpeg|tiff|png)$/i);
+
+    console.log('answer',this.state.answers)
+    let quizBuild = Object.keys(questions).map((question, i ) =>{
+        let quizOptions = Object.keys(options[i]).map((option, j)=>{
+            let opt = options[i][option];
+            if(opt['type'] === 'text'){
+                return (
+                    <button 
+                        id={"opt-" + j} 
+                        className={"option " + (answers[i] === option ? "active" : "" ) }key={j} 
+                        onClick={() => this.onChangeHandler(option, i)} >
+                        {opt['src']}
+                    </button>
+                )
+            }else
+            if(opt['type'] === 'color'){
+                console.log(opt['src'])
+                return(
+                    <button 
+                    id={"opt-" + j} 
+                    style={{backgroundColor: opt['src']}}
+                    className={"option color-btn " + (answers[i] === option ? "active" : "" ) }key={j} 
+                    onClick={() => this.onChangeHandler(option, i)} >
+                </button>
+                )
+            }else
+            if(opt['type'] === 'image'){
+                return(
+                    <button 
+                    id={"opt-" + j} 
+                    style={{bacgroundColor: option}}
+                    className={"option img-btn" + (answers[i] === option ? "active" : "" ) }key={j} 
+                    onClick={() => this.onChangeHandler(option, i)} >
+                      <img className='optionImage' src={opt['src']} alt={option + " Image"} />
+                </button>
+                )
+            }else{
+                return null
+            }
+            
+        })
+        return(
+            <div id={'q-' + i } className="question-card"key={i}>
+            <h2 className="question">{questions[question]}</h2>
+            <div className="optionsContainer">{quizOptions}</div>
+        </div>
+        )
+    })
+    if(completed){
+        return(
+            <div className="productModal-">
                 <h2 style={{textAlign:'center'}}>Your best match is: <strong>ULD Jacket</strong>
                     <br/>
                     [short description]
@@ -171,75 +192,43 @@ class Quiz extends Component {
                 <div className="productContainer">
                     {products}
                 </div>
+                <br/>
+                <br/>
                 <button>Share this quiz!</button>
                 <br/>
                 <button onClick={this.restart}>Start Over</button>
             </div>
-        );
-    } 
-
-    let imageCheck = (/\.(gif|jpg|jpeg|tiff|png)$/i);
-
-    console.log('answer',this.state.answers)
-    let quizBuild = Object.keys(questions).map((question, i ) =>{
-        let quizOptions = Object.keys(options[i]).map((option, j)=>{
-            let opt = options[i][option].toLowerCase();
-            if(opt == 'text'){
-                return (
-                    <button 
-                        id={"opt-" + j} 
-                        className={"option " + (answers[i] == option ? "active" : "" ) }key={j} 
-                        onClick={() => this.onChangeHandler(option, i)} >
-                        {option}
-                    </button>
-                )
-            }
-            if(opt == 'color'){
-                return(
-                    <button 
-                    id={"opt-" + j} 
-                    style={{backgroundColor: option}}
-                    className={"option color-btn " + (answers[i] == option ? "active" : "" ) }key={j} 
-                    onClick={() => this.onChangeHandler(option, i)} >
-               
-                </button>
-                )
-               
-            }
-            if(opt == 'image'){
-                return(
-                    <button 
-                    id={"opt-" + j} 
-                    style={{bacgroundColor: option}}
-                    className={"option color-btn" + (answers[i] == option ? "active" : "" ) }key={j} 
-                    onClick={() => this.onChangeHandler(option, i)} >
-                            pic
-                </button>
-                )
-              
-            }
-        })
-        return(
-            <div id={'q-' + i } className="question-card"key={i}>
-            <h2 className="question">{questions[question]}</h2>
-            <div className="optionsContainer">{quizOptions}</div>
-        </div>
         )
-    })
- 
+    }
     return (
         <div className="quiz">
-            <h2>Find the best Match!</h2>
-            <button onClick={this.startQuiz}>Start</button>
+            {single ?
+            <div style={{textAlign:'center'}}>
+                <div className="bannerImage" >
+                    <div className="bannerText">
+                        <div className="bannerText-inner">
+                            <h1>{title}</h1>
+                            <p>{description}</p>
+                            <button onClick={this.startQuiz}>Start</button>
+
+                        </div>
+                    </div>
+                    <img src={bannerImage} alt={title + " Image"}/>
+                </div>
+            </div>
+            :
+                null
+            }
             <div className={"quizContainer " + (isOpen ? "" : "hide")}>
-                <div  className="quizModal">
+                <div className="quizModal">
                     <span className="progress-bar" style={{width:(questionCount/(total-1))*100 + '%'}}></span>
                     {quizBuild[questionCount]}
                     <div className="button-container">
                         {questionCount > 0 ?
-                            <button onClick={this.prevQuestion}>Previous</button>
+                            <button className="prev-btn" onClick={this.prevQuestion}>Previous</button>
                         :   null
                         }
+                            <button className="next-btn" onClick={this.nextQuestion} disabled={answers[questionCount] == null ? true : false}>Next</button>
                     </div>
                 </div>
                 <div onClick={this.startQuiz} className="overlay"></div>
