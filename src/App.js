@@ -7,92 +7,82 @@ function App() {
   let singlePage = true;
   let quizzes = {
     q1: {
-      title: 'Jackets',
+      title: 'Jeans',
       description: 'Find your match',
       bannerImage: 'https://images.pexels.com/photos/949587/pexels-photo-949587.jpeg',
       quiz: {
         questions: {
-          0: "Pick a season",
-          1: "What's your favorite color?",
-          2: "Looking for something light-weight?",
-          3: "How active are you?",
-          4: "How would you like to shop?"
+          0: "How do you like your jeans to fit?",
+          1: "What type of cut are you looking for?",
+          2: "What's your style?",
+          3: "Sizing?",
+
         },
         options: {
           0: {
-            'Summer': {
+            'Tight': {
               type: 'text',
-              src: 'Summer'
+              src: 'Tight'
             },
-            'Winter': {
+            'Loose': {
               type: 'text',
-              src: 'Winter'
+              src: 'Loose'
             },
-            'Spring': { 
+            'Regular': { 
               type: 'text',
-              src: 'Spring'
+              src: 'Regular'
             },
-            'Fall': {
+            'Straight': {
               type: 'text',
-              src: 'Fall'
+              src: 'Straight'
             }
           },
           1: {
-            '00': {
+            'Flared': {
               type: 'color',
               src: '#C5C3C6'
             },
-            '34':  {
+            'Wide':  {
               type: 'color',
               src: '#1985A1'
             },
-            '12':  {
+            'Straight':  {
               type: 'color',
               src: '#8797B2'
-            },
-            '22':  {
-              type: 'color',
-              src: '#6D8A96'
-            },
+            }
           },
           2: {
-            'yes': {
+            'Stretchy': {
               type: 'text',
-              src: 'yes'
+              src: 'Stretchy'
             },
-            'no': {
+            'Ripped': {
               type: 'text',
-              src: 'no'
+              src: 'Ripped'
+            },
+            'High Rise': {
+              type:'text',
+              src:'High Rise'
             }
           },
           3: {
-            'yes': {
+            'XXS - XS': {
               type: 'text',
-              src: 'yes'
+              src: 'XXS - XS'
             },
-            'no': {
+            'S - M': {
+              type: 'text',
+              src: 'S - M '
+            },
+            'L - XL': {
               type: 'text',
               src: 'no'
+            },
+            'XXL -XXXL' : {
+              type: 'text',
+              src: 'text'
             }
           },
-          4: {
-            'Women':  {
-              type: 'image',
-              src: 'https://image.uniqlo.com//UQ/ST3/us/imagesother/What-is-AIRism/AIRism-asset-airismlogo-1.png'
-            },
-            'Men':  {
-              type: 'text',
-              src: 'Men'
-            },
-            'Kids':  {
-              type: 'text',
-              src: 'Kids'
-            },
-            'Baby':  {
-              type: 'image',
-              src: 'https://image.uniqlo.com//UQ/ST3/us/imagesother/What-is-AIRism/AIRism-asset-airismlogo-1.png'
-            }
-          }
         }
       }
     },
