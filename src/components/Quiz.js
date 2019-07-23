@@ -34,6 +34,11 @@ class Quiz extends Component {
         })
     }
 
+    linkBuilder = (e)=>{
+        e.preventDefault()
+        console.log(this.state.answers)
+    }
+
     isCompleted = ()=>{
         this.setState({
             completed: !this.state.completed,
@@ -132,7 +137,6 @@ class Quiz extends Component {
 
     let imageCheck = (/\.(gif|jpg|jpeg|tiff|png)$/i);
 
-    console.log('answer',this.state.answers)
     let quizBuild = Object.keys(questions).map((question, i ) =>{
         let quizOptions = Object.keys(options[i]).map((option, j)=>{
             let opt = options[i][option];
@@ -147,7 +151,6 @@ class Quiz extends Component {
                 )
             }else
             if(opt['type'] === 'color'){
-                console.log(opt['src'])
                 return(
                     <button 
                     id={"opt-" + j} 
@@ -158,7 +161,6 @@ class Quiz extends Component {
                 )
             }else
             if(opt['type'] === 'image'){
-                console.log(opt['text'])
                 return(
                     <button 
                     id={"opt-" + j} 
@@ -184,12 +186,16 @@ class Quiz extends Component {
         return(
             <div className="productModal-">
                 <h2 style={{textAlign:'center'}}>Your best match is: <strong>Jeans</strong>
-                    <br/>
-                    [short description]
-                    <br/>
-                    [learn more btn]
+                
+                    
                 </h2>
-                <button style={{margin: '0 auto 20px'}}>Shop Now!</button>
+                <p style={{textAlign: 'center'}}> 
+                    The best jeans EVER</p>
+                <button style={{margin: '0 auto 20px'}} >
+                    <a href="https://www.uniqlo.com/us/en/women/jeans/regular-fit-jeans/black%7Cblue/25inch?ptid=women-jeans#search-result-items">
+                        Shop Now!
+                    </a>
+                </button>
                 <div className="productContainer">
                     <img style={{width: "100%", maxWidth: '400px', margin: '0 auto'}} src="https://image.uniqlo.com/UQ/ST3/WesternCommon/imagesgoods/418866/item/goods_66_418866.jpg?width=380" alt=""/>
                 </div>

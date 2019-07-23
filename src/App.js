@@ -16,7 +16,8 @@ function App() {
           1: "What type of cut are you looking for?",
           2: "What's your style?",
           3: "Measurements",
-          4: "How would you like to shop?"
+          4: "Pick a color",
+          5: "How would you like to shop?"
 
         },
         options: {
@@ -93,6 +94,25 @@ function App() {
             }
           },
           4: {
+            'Black': {
+              type: 'color',
+              src: '#000'
+            },
+            'Blue': {
+              type: 'color',
+              src: '#00f'
+            },
+            'Gray': {
+              type: 'color',
+              src: '#999'
+            },
+            'White' : {
+              type: 'color',
+              src: '#fff'
+            }
+
+          },
+          5: {
             'Top-Rated' : {
               type: 'text',
               src:'Top Rated'
@@ -288,22 +308,21 @@ function App() {
     },
   }
 
-  let quizCard = Object.keys(quizzes).map((q, i) => {
-    console.log("data",q)
-    console.log("background", quizzes[q].bannerImage)
-    return (
-      <div className="quiz-card" >
-        <div className="quiz-card-inner" >
-          <h1>{quizzes[q].title}</h1>
-          <p>{quizzes[q].description}</p>
-          <div className="bannerImage">
-            <img src={quizzes[q].bannerImage} width={'100%'} alt={quizzes[q].title + " Banner"}style={{margin:"10px 0 "}}/>
-          </div>
-          <QuizCard title={quizzes[q].title} questions={quizzes[q].quiz.questions} options={quizzes[q].quiz.options} />
-        </div>
-      </div>
-    )
-  })
+  // let quizCard = Object.keys(quizzes).map((q, i) => {
+
+  //   return (
+  //     <div className="quiz-card" >
+  //       <div className="quiz-card-inner" >
+  //         <h1>{quizzes[q].title}</h1>
+  //         <p>{quizzes[q].description}</p>
+  //         <div className="bannerImage">
+  //           <img src={quizzes[q].bannerImage} width={'100%'} alt={quizzes[q].title + " Banner"}style={{margin:"10px 0 "}}/>
+  //         </div>
+  //         <QuizCard title={quizzes[q].title} questions={quizzes[q].quiz.questions} options={quizzes[q].quiz.options} />
+  //       </div>
+  //     </div>
+  //   )
+  // })
   return ( 
     <div className = "App">
        
