@@ -197,7 +197,7 @@ class Quiz extends Component {
                     </a>
                 </button>
                 <div className="productContainer">
-                    <img style={{width: "100%", maxWidth: '400px', margin: '0 auto'}} src="https://image.uniqlo.com/UQ/ST3/WesternCommon/imagesgoods/418866/item/goods_66_418866.jpg?width=380" alt=""/>
+                    <img style={{width: "100%", maxWidth: '400px', margin: '0 auto'}} src="https://image.uniqlo.com//UQ/ST3/us/imagesother/quiz/quiz19-jeans-regularfit.jpg" alt=""/>
                 </div>
                 {/* <br/>
                 <br/>
