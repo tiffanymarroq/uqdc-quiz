@@ -158,13 +158,14 @@ class Quiz extends Component {
                 )
             }else
             if(opt['type'] === 'image'){
+                console.log(opt['text'])
                 return(
                     <button 
                     id={"opt-" + j} 
-                    style={{bacgroundColor: option}}
-                    className={"option img-btn" + (answers[i] === option ? "active" : "" ) }key={j} 
+                        className={"option img-btn " + (answers[i] === option ? "active" : "" ) }key={j} 
                     onClick={() => this.onChangeHandler(option, i)} >
                       <img className='optionImage' src={opt['src']} alt={option + " Image"} />
+                      {opt['text'] ? <p className="img-text">{opt['text']}</p> : null}
                 </button>
                 )
             }else{
@@ -182,27 +183,27 @@ class Quiz extends Component {
     if(completed){
         return(
             <div className="productModal-">
-                <h2 style={{textAlign:'center'}}>Your best match is: <strong>ULD Jacket</strong>
+                <h2 style={{textAlign:'center'}}>Your best match is: <strong>Jeans</strong>
                     <br/>
                     [short description]
                     <br/>
                     [learn more btn]
                 </h2>
-                <p>Here are your matches</p>
+                <button style={{margin: '0 auto 20px'}}>Shop Now!</button>
                 <div className="productContainer">
-                    {products}
+                    <img style={{width: "100%", maxWidth: '400px', margin: '0 auto'}} src="https://image.uniqlo.com/UQ/ST3/WesternCommon/imagesgoods/418866/item/goods_66_418866.jpg?width=380" alt=""/>
                 </div>
-                <br/>
+                {/* <br/>
                 <br/>
                 <button>Share this quiz!</button>
                 <br/>
-                <button onClick={this.restart}>Start Over</button>
+                <button onClick={this.restart}>Start Over</button> */}
             </div>
         )
     }
     return (
         <div className="quiz">
-            {single ?
+      
             <div style={{textAlign:'center'}}>
                 <div className="bannerImage" >
                     <div className="bannerText">
@@ -216,19 +217,17 @@ class Quiz extends Component {
                     <img src={bannerImage} alt={title + " Image"}/>
                 </div>
             </div>
-            :
-                null
-            }
+         
             <div className={"quizContainer " + (isOpen ? "" : "hide")}>
                 <div className="quizModal">
                     <span className="progress-bar" style={{width:(questionCount/(total-1))*100 + '%'}}></span>
                     {quizBuild[questionCount]}
                     <div className="button-container">
                         {questionCount > 0 ?
-                            <button className="prev-btn" onClick={this.prevQuestion}>Previous</button>
+                            <button className="prev-btn" onClick={this.prevQuestion}>Prev</button>
                         :   null
                         }
-                            <button className="next-btn" onClick={this.nextQuestion} disabled={answers[questionCount] == null ? true : false}>Next</button>
+                            <button className="next-btn" style={{marginLeft: 'auto'}} onClick={this.nextQuestion} disabled={answers[questionCount] == null ? true : false}>Next</button>
                     </div>
                 </div>
                 <div onClick={this.startQuiz} className="overlay"></div>

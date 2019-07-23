@@ -9,13 +9,14 @@ function App() {
     q1: {
       title: 'Jeans',
       description: 'Find your match',
-      bannerImage: 'https://images.pexels.com/photos/949587/pexels-photo-949587.jpeg',
+      bannerImage: 'https://www.uniqlo.com/jp/jeansspecial/images/181228-19SS_Jeans_WM_cover.jpg',
       quiz: {
         questions: {
           0: "How do you like your jeans to fit?",
           1: "What type of cut are you looking for?",
           2: "What's your style?",
-          3: "Sizing?",
+          3: "Measurements",
+          4: "How would you like to shop?"
 
         },
         options: {
@@ -39,16 +40,24 @@ function App() {
           },
           1: {
             'Flared': {
-              type: 'color',
-              src: '#C5C3C6'
+              type: 'image',
+              text: 'Flared',
+              src: 'https://image.uniqlo.com/UQ/ST3/WesternCommon/imagesgoods/420408/item/goods_08_420408.jpg?width=380'
             },
             'Wide':  {
-              type: 'color',
-              src: '#1985A1'
+              type: 'image',
+              text:'Wide',
+              src: 'https://image.uniqlo.com/UQ/ST3/WesternCommon/imagesgoods/421496/item/goods_63_421496.jpg?width=380'
             },
             'Straight':  {
-              type: 'color',
-              src: '#8797B2'
+              type: 'image',
+              text: 'Straight',
+              src: 'https://image.uniqlo.com/UQ/ST3/WesternCommon/imagesgoods/420004/item/goods_69_420004.jpg?width=380'
+            },
+            'Skinny':{
+              type: 'image',
+              text: 'Skinny',
+              src: 'https://image.uniqlo.com/UQ/ST3/WesternCommon/imagesgoods/413116/item/goods_64_413116.jpg?width=380'
             }
           },
           2: {
@@ -76,13 +85,24 @@ function App() {
             },
             'L - XL': {
               type: 'text',
-              src: 'no'
+              src: 'L - XL'
             },
             'XXL -XXXL' : {
               type: 'text',
-              src: 'text'
+              src: 'XXL -XXXL'
             }
           },
+          4: {
+            'Top-Rated' : {
+              type: 'text',
+              src:'Top Rated'
+            },
+            'Bestsellers' : {
+              type: 'text',
+              src:'Bestsellers'
+            }
+
+          }
         }
       }
     },
@@ -286,8 +306,8 @@ function App() {
   })
   return ( 
     <div className = "App">
-        <h1>Quizzes</h1>
-        {singlePage ? 
+       
+      
               <QuizCard
                 single={singlePage} 
                 title={quizzes["q1"].title}
@@ -295,11 +315,9 @@ function App() {
                 description={quizzes["q1"].description}
                 questions={quizzes["q1"].quiz.questions} 
                 options={quizzes["q1"].quiz.options} />
-          :
-          <div className="quiz-content">
-            {quizCard}
-          </div>
-        }
+          
+      
+
         
     </div>
   );
