@@ -13,7 +13,7 @@ function App() {
       quiz: {
         questions: {
           0: "How do you like your jeans to fit?",
-          1: "What type of cut are you looking for?",
+          1: "Pick a cut",
           2: "What's your style?",
           3: "Measurements",
           4: "Pick a color",

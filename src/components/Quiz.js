@@ -99,22 +99,22 @@ class Quiz extends Component {
     
     let dummyData = {
         0: {
-        'title': "ULD",
-        'url' : "https://www.uniqlo.com/us/en/women-reversible-parka-410091.html",
-        'price' : "$9.90",
-        'productImage' : 'https://image.uniqlo.com/UQ/ST3/WesternCommon/imagesgoods/409111/item/goods_69_409111.jpg'
+        'title': "Jeans",
+        'url' : "https://www.uniqlo.com/us/en/women-high-rise-ultra-stretch-ankle-jeans-416513.html?dwvar_416513_color=COL69&cgid=",
+        'price' : "$39.90",
+        'productImage' : 'https://image.uniqlo.com/UQ/ST3/WesternCommon/imagesgoods/416513/item/goods_69_416513.jpg?width=380'
         },
         1: {
-        'title': "ULD",
-        'url' : "https://www.uniqlo.com/us/en/women-reversible-parka-410091.html",
-        'price' : "$9.90",
-        'productImage' : 'https://image.uniqlo.com/UQ/ST3/WesternCommon/imagesgoods/409111/item/goods_69_409111.jpg'
+        'title': "Jeans",
+        'url' : "https://www.uniqlo.com/us/en/women-high-rise-ultra-stretch-ankle-jeans-416513.html?dwvar_416513_color=COL69&cgid=",
+        'price' : "$39.90",
+        'productImage' : 'https://image.uniqlo.com/UQ/ST3/WesternCommon/imagesgoods/416513/item/goods_69_416513.jpg?width=380'
         },
         2: {
-        'title': "ULD",
-        'url' : "https://www.uniqlo.com/us/en/women-reversible-parka-410091.html",
-        'price' : "$9.90",
-        'productImage' : 'https://image.uniqlo.com/UQ/ST3/WesternCommon/imagesgoods/409111/item/goods_69_409111.jpg'
+        'title': "Jeans",
+        'url' : "https://www.uniqlo.com/us/en/women-high-rise-ultra-stretch-ankle-jeans-416513.html?dwvar_416513_color=COL69&cgid=",
+        'price' : "$39.90",
+        'productImage' : 'https://image.uniqlo.com/UQ/ST3/WesternCommon/imagesgoods/416513/item/goods_69_416513.jpg?width=380'
         }
     }
     let products = Object.keys(dummyData).map((product, i) => {
@@ -135,7 +135,6 @@ class Quiz extends Component {
     }
 
 
-    let imageCheck = (/\.(gif|jpg|jpeg|tiff|png)$/i);
 
     let quizBuild = Object.keys(questions).map((question, i ) =>{
         let quizOptions = Object.keys(options[i]).map((option, j)=>{
@@ -167,7 +166,7 @@ class Quiz extends Component {
                         className={"option img-btn " + (answers[i] === option ? "active" : "" ) }key={j} 
                     onClick={() => this.onChangeHandler(option, i)} >
                       <img className='optionImage' src={opt['src']} alt={option + " Image"} />
-                      {opt['text'] ? <p className="img-text">{opt['text']}</p> : null}
+                      {opt['text'] ? <div className="img-text"><p>{opt['text']}</p></div> : null}
                 </button>
                 )
             }else{
@@ -184,27 +183,30 @@ class Quiz extends Component {
     })
     if(completed){
         return(
-            <div className="productModal-">
-                <h2 style={{textAlign:'center'}}>Your best match is: <strong>Jeans</strong>
+            <div>
+                <div className="product-result">
+                    <div>
+                        <h2 style={{textAlign:'center'}}>Your best match is: <strong>Skinny Fit</strong></h2>
+                        <p style={{textAlign: 'center'}}> 
+                        Densley-woven fabric with roughly twice the stretch of normal denim for a flattering fit that hugs your curves.</p>
+                        {/* <button style={{margin: '0 auto 20px'}} >
+                            <a href="https://www.uniqlo.com/us/en/women/jeans/skinny-fit-jeans/gray/27inch?ptid=women-jeans-skinny-fit-jeans">
+                                Shop Now!
+                            </a>
+                        </button> */}
+                        <button style={{margin: '0 auto 20px'}} onClick={this.restart}>Start Over</button>
+                    </div>
                 
-                    
-                </h2>
-                <p style={{textAlign: 'center'}}> 
-                    The best jeans EVER</p>
-                <button style={{margin: '0 auto 20px'}} >
-                    <a href="https://www.uniqlo.com/us/en/women/jeans/regular-fit-jeans/black%7Cblue/25inch?ptid=women-jeans#search-result-items">
-                        Shop Now!
-                    </a>
-                </button>
-                <div className="productContainer">
-                    <img style={{width: "100%", maxWidth: '400px', margin: '0 auto'}} src="https://image.uniqlo.com//UQ/ST3/us/imagesother/quiz/quiz19-jeans-regularfit.jpg" alt=""/>
+                    <div >
+                        <img style={{width: "100%", maxWidth: '400px', margin: '0 auto'}} src="https://image.uniqlo.com//UQ/ST3/us/imagesother/quiz/quiz19-jeans-regularfit.jpg" alt=""/>
+                    </div>
+                
                 </div>
-                {/* <br/>
-                <br/>
-                <button>Share this quiz!</button>
-                <br/>
-                <button onClick={this.restart}>Start Over</button> */}
+                <div className="productContainer"  style={{marginTop:'60px'}}>
+                    {products}
+                </div>
             </div>
+
         )
     }
     return (
