@@ -8,7 +8,7 @@ class Quiz extends Component {
     constructor(props) {
     super(props);
     this.state = {
-        completed: false,
+        completed: true,
         questionCount: 0,
         isOpen: false,
         answers:{},
@@ -75,6 +75,16 @@ class Quiz extends Component {
                 questionCount: this.state.questionCount - 1
             })
         }
+    }
+
+    getProducts = async => {
+        return fetch('https://www.uniqlo.com/us/en/on/demandware.store/Sites-UniqloUS-Site/default/Product-HitTile?pid=420684' )
+        .then( res => {
+            console.log(res)
+        })
+        .catch(err => {
+            console.log(err, 'ERR')
+        })
     }
 
     render() {
@@ -184,16 +194,16 @@ class Quiz extends Component {
     if(completed){
         return(
             <div>
-                <div className="product-result">
+                {/* <div className="product-result">
                     <div>
                         <h2 style={{textAlign:'center'}}>Your best match is: <strong>Skinny Fit</strong></h2>
                         <p style={{textAlign: 'center'}}> 
                         Densley-woven fabric with roughly twice the stretch of normal denim for a flattering fit that hugs your curves.</p>
-                        {/* <button style={{margin: '0 auto 20px'}} >
+                        <button style={{margin: '0 auto 20px'}} >
                             <a href="https://www.uniqlo.com/us/en/women/jeans/skinny-fit-jeans/gray/27inch?ptid=women-jeans-skinny-fit-jeans">
                                 Shop Now!
                             </a>
-                        </button> */}
+                        </button>
                         <button style={{margin: '0 auto 20px'}} onClick={this.restart}>Start Over</button>
                     </div>
                 
@@ -201,10 +211,11 @@ class Quiz extends Component {
                         <img style={{width: "100%", maxWidth: '400px', margin: '0 auto'}} src="https://image.uniqlo.com//UQ/ST3/us/imagesother/quiz/quiz19-jeans-regularfit.jpg" alt=""/>
                     </div>
                 
-                </div>
-                <div className="productContainer"  style={{marginTop:'60px'}}>
+                </div> */}
+                {/* <div className="productContainer"  style={{marginTop:'60px'}}>
                     {products}
-                </div>
+                </div> */}
+                <button onClick={this.getProducts}>Get Products</button>
             </div>
 
         )
